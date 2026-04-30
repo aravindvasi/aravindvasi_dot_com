@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aravind V. A. — Portfolio</title>
+  <meta name="description" content="Aravind V. A. — Quantum computing enthusiast. Engineer exploring ML, quantum computing, and intelligent systems." />
+  <meta name="author" content="Aravind V. A." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Aravind V. A. — Portfolio" />
+  <meta property="og:description" content="Quantum computing enthusiast. Engineer exploring ML, quantum computing, and intelligent systems." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://aravindvasi.com" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Background grain + grid layers -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-grain" aria-hidden="true"></div>
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="#top" class="nav-logo">A.V.A</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span>
+    </button>
+  </nav>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-meta">
+        <span class="status-dot"></span>
+        <span class="status-text">Open to Master's programs · 2026 intake</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="word" data-text="Aravind">Aravind</span>
+        <span class="word" data-text="V.&nbsp;A.">V.&nbsp;A.</span>
+      </h1>
+
+      <!-- TAGLINE: change this line whenever you want -->
+      <p class="hero-tagline">Quantum computing enthusiast.</p>
+
+      <div class="hero-coords">
+        <div><span>LAT</span> 12.9716° N</div>
+        <div><span>LON</span> 77.5946° E</div>
+        <div><span>LOC</span> Bengaluru, IN</div>
+      </div>
+
+      <a href="#about" class="hero-scroll">
+        <span>Scroll</span>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </a>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <h2 class="section-title">About</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I'm an Electronics &amp; Communication engineer based in Bengaluru, drawn
+            to the places where machine learning, quantum computing, and signal
+            intelligence overlap. I like systems that have to behave well under
+            uncertainty &mdash; biological signals, noisy sensors, qubits.
+          </p>
+          <p>
+            By day I work as an SAP Digital Manufacturing support analyst at TCS,
+            stabilising integrations and chasing down root causes. Outside that,
+            I'm spending most of my time on quantum algorithms, ML research, and
+            <em>preparing for graduate school</em>.
+          </p>
+          <p>
+            When I'm not in front of a terminal, I'm watching Formula One,
+            tinkering with gadgets, or making art.
+          </p>
+        </div>
+        <aside class="about-side reveal">
+          <div class="about-card">
+            <h4>Currently</h4>
+            <ul>
+              <li>Researching Master's programs</li>
+              <li>Studying quantum ML</li>
+              <li>Learning Japanese (slowly)</li>
+            </ul>
+          </div>
+          <div class="about-card">
+            <h4>Stack</h4>
+            <ul>
+              <li>Python · ML</li>
+              <li>TensorFlow · scikit-learn</li>
+              <li>C++ · MATLAB</li>
+              <li>Git · Linux</li>
+            </ul>
+          </div>
+          <div class="about-card">
+            <h4>Languages</h4>
+            <ul>
+              <li>English · Kannada · Hindi</li>
+              <li>Telugu (conversational)</li>
+              <li>日本語 (beginner)</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section" id="experience">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Experience</h2>
+      </div>
+      <div class="timeline">
+        <article class="timeline-item reveal">
+          <div class="timeline-meta">
+            <span class="timeline-date">Jun 2024 — Feb 2026</span>
+            <span class="timeline-loc">Bengaluru</span>
+          </div>
+          <div class="timeline-body">
+            <h3>SAP DM Support Analyst</h3>
+            <p class="timeline-org">Tata Consultancy Services · Client: Pandora A/S</p>
+            <ul>
+              <li>Analysed system stability and integration across business functions for Pandora's SAP DM application, reducing per-member workload by up to 20%.</li>
+              <li>Acted as team lead backup &mdash; streamlined system analysis workflows and accelerated root-cause identification, keeping SLA compliance consistent.</li>
+              <li>Cut issue resolution time by ~30% through proactive root-cause analysis.</li>
+              <li>Recognised by TCS with a 4.09 / 5.00 performance rating in the first year.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="section" id="projects">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Projects</h2>
+      </div>
+      <div class="projects-grid">
+
+        <article class="project-card reveal">
+          <header>
+            <span class="project-year">2024</span>
+            <span class="project-tag">Deep Learning · Healthcare</span>
+          </header>
+          <h3>Alzheimer's Detection from MRI</h3>
+          <p>
+            Led a team of four to optimise a CNN for early Alzheimer's detection
+            from MRI scans &mdash; model design, training, and GPU memory
+            optimisation. Built with TensorFlow, pandas, NumPy, scikit-learn.
+          </p>
+          <p class="project-pub">
+            Published &mdash; ICSSES 2024 ·
+            <a href="https://doi.org/10.1109/ICSSES62373.2024.10561304" target="_blank" rel="noopener">DOI: 10.1109/ICSSES62373.2024.10561304 ↗</a>
+          </p>
+        </article>
+
+        <article class="project-card reveal">
+          <header>
+            <span class="project-year">2025</span>
+            <span class="project-tag">Quantum · Cryptography</span>
+          </header>
+          <h3>QryptChat</h3>
+          <p>
+            A chat application implementing the BB92 quantum key-distribution
+            algorithm to demonstrate a secure communication channel between two
+            parties. Built during the IISc Quantum Computing &amp; AI program.
+          </p>
+          <p class="project-pub">IISc · Nov 2025</p>
+        </article>
+
+        <article class="project-card reveal">
+          <header>
+            <span class="project-year">2023</span>
+            <span class="project-tag">IoT · Signal Processing</span>
+          </header>
+          <h3>IoT Breathing Sound Detection</h3>
+          <p>
+            Led a team of four building an IoT-based breathing sound detection
+            system using an INMP441 mic and ESP32 for real-time respiratory
+            analysis. C++ + HTTP server for audio storage, MATLAB for noise
+            filtering.
+          </p>
+          <p class="project-pub">
+            Poster &mdash; IIT Bombay AI Impact 2023 (mmWave + federated learning for asthma detection)
+          </p>
+        </article>
+
+        <article class="project-card reveal">
+          <header>
+            <span class="project-year">2022</span>
+            <span class="project-tag">IoT · ML</span>
+          </header>
+          <h3>IoT Health Monitoring System</h3>
+          <p>
+            Directed a team of six to build a Raspberry Pi 3 based health monitor
+            using DS18B20 temperature and pulse sensors. MQTT communication
+            between the Pi and an Android app built in Android Studio.
+          </p>
+          <p class="project-pub">Industrial Training · Sept–Oct 2022</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ PUBLICATIONS / CERTIFICATIONS ============ -->
+    <section class="section" id="publications">
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <h2 class="section-title">Publications &amp; Credentials</h2>
+      </div>
+      <div class="pubs">
+        <div class="pub-item reveal">
+          <span class="pub-type">Paper</span>
+          <div>
+            <h4>Alzheimer's Disease Detection from MRI Images using Histogram of Oriented Gradients and Support Vector Machine</h4>
+            <p>V. A. Aravind <em>et al.</em>, ICSSES 2024, Tumakuru, India · pp. 1&ndash;6</p>
+            <a href="https://doi.org/10.1109/ICSSES62373.2024.10561304" target="_blank" rel="noopener">DOI: 10.1109/ICSSES62373.2024.10561304 ↗</a>
+          </div>
+        </div>
+
+        <div class="pub-item reveal">
+          <span class="pub-type">Poster</span>
+          <div>
+            <h4>Noninvasive asthma detection using mmWave sensor and federated learning</h4>
+            <p>IIT Bombay · AI Impact 2023 workshop</p>
+          </div>
+        </div>
+
+        <div class="pub-item reveal">
+          <span class="pub-type">Cert.</span>
+          <div>
+            <h4>Quantum Computing &amp; Artificial Intelligence</h4>
+            <p>Indian Institute of Science (IISc) · Nov 2025</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BLOG ============ -->
+    <section class="section" id="blog">
+      <div class="section-head">
+        <span class="section-num">05</span>
+        <h2 class="section-title">Writing</h2>
+      </div>
+      <div class="blog-empty reveal">
+        <p class="blog-soon">Coming soon.</p>
+        <p>
+          I'm planning notes on quantum algorithms, ML papers I'm reading, and
+          weekend projects. The first post is in draft.
+        </p>
+        <!--
+          When you have posts, replace this block with:
+          <article class="blog-card">
+            <span class="blog-date">2026 · 04 · 30</span>
+            <h3><a href="posts/your-post.html">Post title</a></h3>
+            <p>One-line summary.</p>
+          </article>
+        -->
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section" id="contact">
+      <div class="section-head">
+        <span class="section-num">06</span>
+        <h2 class="section-title">Contact</h2>
+      </div>
+      <div class="contact-block reveal">
+        <p class="contact-lead">
+          I'm open to research collaborations, Master's program conversations,
+          and quietly nerdy emails about quantum or F1.
+        </p>
+
+        <a href="mailto:aravindva@hotmail.com" class="contact-mail">
+          aravindva@hotmail.com
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+
+        <ul class="contact-links">
+          <li>
+            <a href="https://www.linkedin.com/in/aravindva" target="_blank" rel="noopener">
+              <span>01</span> LinkedIn
+            </a>
+          </li>
+          <li>
+            <a href="https://www.github.com/spearpx" target="_blank" rel="noopener">
+              <span>02</span> GitHub
+            </a>
+          </li>
+          <li>
+            <a href="tel:+918867391390">
+              <span>03</span> +91 88673 91390
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <p>&copy; <span id="year"></span> Aravind V. A.</p>
+      <p>Bengaluru, IN · aravindvasi.com</p>
+    </div>
+    <p class="footer-note">Built with care · last updated <span id="updated"></span></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
