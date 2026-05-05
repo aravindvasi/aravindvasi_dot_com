@@ -60,6 +60,14 @@ const {
       (function () {
         'use strict';
 
+        // ViewTransitions re-runs inline scripts but window 'load' never fires again,
+        // so the loader would show and never dismiss. Skip it on client-side navigations.
+        if (document.documentElement.dataset.astroTransition) {
+          var _l = document.getElementById('loader');
+          if (_l) _l.remove();
+          return;
+        }
+
         const SWING_MS      = 820;
         const CONTACT_MS    = 90;
         const INITIAL_DELAY = 400;

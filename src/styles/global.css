@@ -1186,6 +1186,7 @@ ul {
 
 .proj-image {
   width: 100%;
+  max-width: 560px;
   display: block;
   border: 1px solid var(--line);
 }
