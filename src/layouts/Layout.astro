@@ -60,14 +60,15 @@ const {
       (function () {
         'use strict';
 
-        // On initial page load this script runs while readyState is 'loading'/'interactive'.
-        // On ViewTransitions swap the document is already 'complete' — window 'load' will
-        // never fire again, so the loader would show forever. Remove it immediately.
+        // sessionStorage flag is absent only on the very first page load in this tab.
+        // ViewTransitions re-runs is:inline scripts but window 'load' never re-fires,
+        // so the loader would hang forever on any subsequent navigation. Skip it.
         var _l = document.getElementById('loader');
-        if (document.readyState === 'complete' || document.documentElement.dataset.astroTransition) {
+        if (sessionStorage.getItem('_sv')) {
           if (_l) _l.remove();
           return;
         }
+        sessionStorage.setItem('_sv', '1');
 
         const SWING_MS      = 820;
         const CONTACT_MS    = 90;
