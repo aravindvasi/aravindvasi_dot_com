@@ -60,10 +60,11 @@ const {
       (function () {
         'use strict';
 
-        // ViewTransitions re-runs inline scripts but window 'load' never fires again,
-        // so the loader would show and never dismiss. Skip it on client-side navigations.
-        if (document.documentElement.dataset.astroTransition) {
-          var _l = document.getElementById('loader');
+        // On initial page load this script runs while readyState is 'loading'/'interactive'.
+        // On ViewTransitions swap the document is already 'complete' — window 'load' will
+        // never fire again, so the loader would show forever. Remove it immediately.
+        var _l = document.getElementById('loader');
+        if (document.readyState === 'complete' || document.documentElement.dataset.astroTransition) {
           if (_l) _l.remove();
           return;
         }
