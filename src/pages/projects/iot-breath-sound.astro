@@ -1,0 +1,156 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+---
+
+<Layout title="IoT Breathing Sound Detection · Aravind V. A." description="IoT-based breathing sound detection system using INMP441 mic, ESP32, and MATLAB DSP — presented at IIT Bombay AI Impact 2023.">
+  <a href="/#projects" class="proj-back">← Projects</a>
+
+  <article>
+    <section class="proj-hero reveal">
+      <div class="proj-eyebrow">
+        <span class="proj-eyebrow-num">03</span>
+        <span>IoT · Signal Processing</span>
+        <span>2023</span>
+      </div>
+      <h1 class="proj-title" transition:name="title-iot-breath">IoT Breathing Sound Detection</h1>
+      <p class="proj-subtitle">
+        A low-cost, non-invasive IoT system for capturing and filtering respiratory sounds —
+        using a MEMS microphone, ESP32, and MATLAB DSP. Presented at IIT Bombay AI Impact 2023.
+      </p>
+    </section>
+
+    <div class="proj-content">
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">Overview</span>
+        <div class="proj-section-body">
+          <p>
+            Nearly 43% of the world population suffers from cardiopulmonary diseases. Traditional
+            detection methods — chest X-rays, CT scans, clinical stethoscopes — are expensive,
+            invasive, and require specialist interpretation. This project built an IoT-based breathing
+            sound detection system that captures lung sounds non-invasively using a MEMS microphone,
+            transmits the audio over Wi-Fi, and applies digital signal processing to extract clean
+            respiratory signals.
+          </p>
+          <p>
+            The system was developed as a 6th-semester mini-project at Siddaganga Institute of
+            Technology (2022–23) under the guidance of Prof. G. Shubha. The extended mmWave and
+            federated learning angle was presented as a poster at the IIT Bombay AI Impact 2023 workshop.
+          </p>
+        </div>
+      </section>
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">Problem</span>
+        <div class="proj-section-body">
+          <p>
+            Lung sounds — crackles, wheezes, rhonchi — carry diagnostic information about respiratory
+            conditions. Auscultation (listening through a stethoscope) depends heavily on clinician
+            skill and is subjective. A system that records, transmits, and filters lung sounds digitally
+            enables objective, repeatable analysis accessible outside clinical settings.
+          </p>
+          <p>
+            The specific challenge was capturing low-amplitude, low-frequency lung sounds (&lt;200 Hz)
+            without excessive noise from the environment, and isolating them from cardiac sounds using
+            digital filtering.
+          </p>
+        </div>
+      </section>
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">Hardware</span>
+        <div class="proj-section-body">
+          <div class="proj-steps">
+            <div class="proj-step">
+              <span class="proj-step-num">—</span>
+              <div class="proj-step-content">
+                <h4>INMP441 MEMS Microphone</h4>
+                <p>High-performance omnidirectional MEMS mic with a 24-bit I²S digital output. SNR of 61 dBA, sensitivity of −26 dBFS, flat frequency response 60 Hz–15 kHz. Connects directly to the ESP32 via I²S — no audio codec required.</p>
+              </div>
+            </div>
+            <div class="proj-step">
+              <span class="proj-step-num">—</span>
+              <div class="proj-step-content">
+                <h4>ESP32-WROOM-32</h4>
+                <p>Dual-core 32-bit LX6 microprocessor with built-in 802.11 b/g/n Wi-Fi and Bluetooth 4.2. Receives I²S audio from the INMP441, buffers it in flash memory, and uploads the raw .wav file to an HTTP server over Wi-Fi.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">Pipeline</span>
+        <div class="proj-section-body">
+          <div class="proj-steps">
+            <div class="proj-step">
+              <span class="proj-step-num">01</span>
+              <div class="proj-step-content">
+                <h4>Capture</h4>
+                <p>INMP441 placed on the thoracic cavity captures analog lung sounds. The built-in ADC converts the signal to 24-bit digital audio and transmits it via I²S to the ESP32.</p>
+              </div>
+            </div>
+            <div class="proj-step">
+              <span class="proj-step-num">02</span>
+              <div class="proj-step-content">
+                <h4>Transmit</h4>
+                <p>ESP32 connects to the host Wi-Fi network and streams the audio buffer to an HTTP server, saving it as a .wav file accessible on the local network.</p>
+              </div>
+            </div>
+            <div class="proj-step">
+              <span class="proj-step-num">03</span>
+              <div class="proj-step-content">
+                <h4>Filter</h4>
+                <p>The .wav file is downloaded and loaded into MATLAB 2023a. A 4th-order bandpass filter (20–200 Hz) removes environmental noise and attenuates cardiac sounds, producing a clean lung sound waveform.</p>
+              </div>
+            </div>
+            <div class="proj-step">
+              <span class="proj-step-num">04</span>
+              <div class="proj-step-content">
+                <h4>Analyse</h4>
+                <p>Time-domain and frequency-domain plots of the raw and filtered signals are compared. Placement near the trachea showed clear inhalation/exhalation striations; placement near the diaphragm retained a dominant heartbeat component even after filtering.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">Extension</span>
+        <div class="proj-section-body">
+          <div class="proj-image-wrap">
+            <img src="/images/projects/iot-breath-poster.jpg" alt="AI Impact 2023 poster at IIT Bombay" class="proj-image" loading="lazy" />
+            <p class="proj-image-caption">Poster presented at IIT Bombay AI Impact 2023 — extending the system with mmWave sensing and federated learning.</p>
+          </div>
+          <p>
+            At the IIT Bombay AI Impact 2023 workshop, the project was extended conceptually to use
+            mmWave radar sensors alongside the acoustic system for non-contact respiratory monitoring,
+            with federated learning enabling multi-site model training without sharing raw patient data.
+            This direction targets asthma detection at scale in resource-limited settings.
+          </p>
+        </div>
+      </section>
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">Stack</span>
+        <div class="proj-section-body">
+          <div class="proj-stack">
+            <span class="proj-stack-item">C++ (Arduino)</span>
+            <span class="proj-stack-item">MATLAB 2023a</span>
+            <span class="proj-stack-item">ESP32-WROOM-32</span>
+            <span class="proj-stack-item">INMP441</span>
+            <span class="proj-stack-item">I²S</span>
+            <span class="proj-stack-item">HTTP Server</span>
+            <span class="proj-stack-item">DSP · Bandpass Filter</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </article>
+</Layout>
+
+<script>
+  import '../../scripts/main.js';
+</script>

@@ -1,0 +1,122 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+---
+
+<Layout title="QryptChat · Aravind V. A." description="A secure chat application implementing the BB92 quantum key distribution protocol, built during the IISc Quantum Computing & AI programme.">
+  <a href="/#projects" class="proj-back">← Projects</a>
+
+  <article>
+    <section class="proj-hero reveal">
+      <div class="proj-eyebrow">
+        <span class="proj-eyebrow-num">01</span>
+        <span>Quantum · Cryptography</span>
+        <span>2025</span>
+      </div>
+      <h1 class="proj-title" transition:name="title-qryptchat">QryptChat</h1>
+      <p class="proj-subtitle">
+        A secure two-party chat application demonstrating the BB92 quantum key distribution
+        protocol — built as part of the IISc Quantum Computing &amp; AI certification programme.
+      </p>
+    </section>
+
+    <div class="proj-content">
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">Overview</span>
+        <div class="proj-section-body">
+          <p>
+            QryptChat demonstrates end-to-end secure communication using quantum key distribution (QKD)
+            rather than classical cryptography. Unlike RSA or Diffie-Hellman, which rely on the
+            computational difficulty of factoring large numbers, QKD derives its security from the
+            laws of quantum mechanics — specifically, the no-cloning theorem and the observer effect.
+          </p>
+          <p>
+            The project was built as the capstone for the Quantum Computing &amp; Artificial Intelligence
+            certification at the Indian Institute of Science (IISc), Bengaluru (Nov 2025). It implements
+            the BB92 protocol — a two-state QKD scheme proposed by Bennett in 1992 as a simplification
+            of the original BB84 protocol.
+          </p>
+        </div>
+      </section>
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">BB92 Protocol</span>
+        <div class="proj-section-body">
+          <div class="proj-steps">
+            <div class="proj-step">
+              <span class="proj-step-num">01</span>
+              <div class="proj-step-content">
+                <h4>Key Generation</h4>
+                <p>Alice encodes random bits using two non-orthogonal quantum states. In BB92, only two states are used (vs. four in BB84), making implementation simpler. Each bit is transmitted as a quantum state through a quantum channel.</p>
+              </div>
+            </div>
+            <div class="proj-step">
+              <span class="proj-step-num">02</span>
+              <div class="proj-step-content">
+                <h4>Measurement</h4>
+                <p>Bob measures each received qubit using a randomly chosen basis. When Bob's basis matches the non-orthogonal state Alice sent, he gets a definitive result; otherwise the result is inconclusive and those bits are discarded.</p>
+              </div>
+            </div>
+            <div class="proj-step">
+              <span class="proj-step-num">03</span>
+              <div class="proj-step-content">
+                <h4>Sifting</h4>
+                <p>Alice and Bob publicly compare which bits produced conclusive results (without revealing the bit values). These form the sifted key — a shared secret that has never been transmitted classically.</p>
+              </div>
+            </div>
+            <div class="proj-step">
+              <span class="proj-step-num">04</span>
+              <div class="proj-step-content">
+                <h4>Eavesdrop Detection</h4>
+                <p>Any eavesdropper (Eve) must measure the qubits to learn the key, but measuring a quantum state disturbs it. Alice and Bob detect Eve's presence by comparing a subset of their key bits — a high error rate signals interception.</p>
+              </div>
+            </div>
+            <div class="proj-step">
+              <span class="proj-step-num">05</span>
+              <div class="proj-step-content">
+                <h4>Secure Messaging</h4>
+                <p>Once a secure key is established, it is used as a one-time pad to encrypt messages between the two parties. The quantum-derived key ensures that the encryption is information-theoretically secure.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">Context</span>
+        <div class="proj-section-body">
+          <p>
+            The implementation was built on a simulated quantum channel — real quantum hardware
+            (superconducting qubits, photonic systems) introduces noise, decoherence, and channel
+            loss that make practical QKD significantly harder. The simulation demonstrates the protocol
+            mechanics and eavesdropper detection faithfully, making it a useful educational artefact for
+            understanding why QKD is considered unconditionally secure.
+          </p>
+          <p>
+            This project sits at the intersection of two areas I find most compelling: quantum algorithms
+            that exploit physical properties for computation, and the question of what cryptographic
+            security looks like in a post-quantum world.
+          </p>
+        </div>
+      </section>
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">Stack</span>
+        <div class="proj-section-body">
+          <div class="proj-stack">
+            <span class="proj-stack-item">Python</span>
+            <span class="proj-stack-item">Qiskit</span>
+            <span class="proj-stack-item">BB92 QKD</span>
+            <span class="proj-stack-item">Quantum Simulation</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </article>
+</Layout>
+
+<script>
+  import '../../scripts/main.js';
+</script>

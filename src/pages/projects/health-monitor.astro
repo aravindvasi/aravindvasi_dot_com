@@ -1,0 +1,140 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+---
+
+<Layout title="IoT Health Monitoring System · Aravind V. A." description="Raspberry Pi 3 based real-time health monitoring system using temperature and pulse sensors over MQTT.">
+  <a href="/#projects" class="proj-back">← Projects</a>
+
+  <article>
+    <section class="proj-hero reveal">
+      <div class="proj-eyebrow">
+        <span class="proj-eyebrow-num">04</span>
+        <span>IoT · ML</span>
+        <span>2022</span>
+      </div>
+      <h1 class="proj-title" transition:name="title-health-monitor">IoT Health Monitoring System</h1>
+      <p class="proj-subtitle">
+        A Raspberry Pi 3 health monitor that streams real-time heart rate and temperature
+        data to a mobile app over MQTT, with CSV logging for downstream ML applications.
+      </p>
+    </section>
+
+    <div class="proj-content">
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">Overview</span>
+        <div class="proj-section-body">
+          <p>
+            Built during an industrial training programme (September–October 2022), this system
+            uses a Raspberry Pi 3 as the central processing unit to collect, process, and transmit
+            biometric data in real time. A team of six was directed through hardware assembly,
+            sensor integration, and MQTT-based communication to a paired Android application.
+          </p>
+          <p>
+            The design prioritised low-cost components and open protocols to make remote health
+            monitoring feasible outside clinical settings. Sensor readings are also logged to CSV
+            files, making the dataset directly usable for machine learning applications such as
+            anomaly detection or trend analysis.
+          </p>
+        </div>
+      </section>
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">Hardware</span>
+        <div class="proj-section-body">
+          <div class="proj-steps">
+            <div class="proj-step">
+              <span class="proj-step-num">—</span>
+              <div class="proj-step-content">
+                <h4>Raspberry Pi 3</h4>
+                <p>1.2 GHz quad-core ARM Cortex-A53, 1 GB RAM. Runs the Python MQTT client, processes sensor data, and manages CSV logging. Acts as the central hub between sensors and the mobile app.</p>
+              </div>
+            </div>
+            <div class="proj-step">
+              <span class="proj-step-num">—</span>
+              <div class="proj-step-content">
+                <h4>DS18B20 Temperature Sensor</h4>
+                <p>1-Wire digital temperature sensor with ±0.5°C accuracy across −55°C to +125°C. Requires only a single GPIO pin and a pull-up resistor, communicating digitally with the Pi.</p>
+              </div>
+            </div>
+            <div class="proj-step">
+              <span class="proj-step-num">—</span>
+              <div class="proj-step-content">
+                <h4>Pulse / Heart Rate Sensor</h4>
+                <p>Optical sensor detecting heart rate via LED light reflection off blood vessels. Outputs an analog signal processed through the MCP3008 ADC using successive approximation, then read by the Pi over SPI.</p>
+              </div>
+            </div>
+            <div class="proj-step">
+              <span class="proj-step-num">—</span>
+              <div class="proj-step-content">
+                <h4>MCP3008 ADC</h4>
+                <p>8-channel 10-bit analog-to-digital converter. Bridges the analog pulse sensor output to the Pi's digital SPI interface, enabling accurate heart rate readings.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">Architecture</span>
+        <div class="proj-section-body">
+          <div class="proj-steps">
+            <div class="proj-step">
+              <span class="proj-step-num">01</span>
+              <div class="proj-step-content">
+                <h4>Sense</h4>
+                <p>DS18B20 transmits temperature directly over 1-Wire. The pulse sensor's analog output is digitised by the MCP3008 via SPI and read by the Pi.</p>
+              </div>
+            </div>
+            <div class="proj-step">
+              <span class="proj-step-num">02</span>
+              <div class="proj-step-content">
+                <h4>Process</h4>
+                <p>Python on the Pi reads both sensors, computes heart rate from the pulse waveform, and formats the readings as MQTT payloads. Simultaneously logs readings to a CSV file.</p>
+              </div>
+            </div>
+            <div class="proj-step">
+              <span class="proj-step-num">03</span>
+              <div class="proj-step-content">
+                <h4>Publish</h4>
+                <p>The Pi publishes readings to an MQTT broker. The Android app subscribes to the relevant topics and displays heart rate and temperature in real time.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">Stack</span>
+        <div class="proj-section-body">
+          <div class="proj-stack">
+            <span class="proj-stack-item">Python</span>
+            <span class="proj-stack-item">Raspberry Pi 3</span>
+            <span class="proj-stack-item">MQTT</span>
+            <span class="proj-stack-item">DS18B20</span>
+            <span class="proj-stack-item">MCP3008</span>
+            <span class="proj-stack-item">SPI · 1-Wire</span>
+            <span class="proj-stack-item">Android Studio</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">Code</span>
+        <div class="proj-section-body">
+          <div class="proj-links">
+            <a href="https://github.com/spearpx/Health_monitor" target="_blank" rel="noopener" class="proj-link">
+              GitHub ↗
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </article>
+</Layout>
+
+<script>
+  import '../../scripts/main.js';
+</script>

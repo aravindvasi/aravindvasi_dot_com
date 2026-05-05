@@ -1,0 +1,189 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+---
+
+<Layout title="Alzheimer's Detection from MRI · Aravind V. A." description="MRI-based Alzheimer's disease severity classification using HOG feature extraction and SVM, published at IEEE ICSSES 2024.">
+  <a href="/#projects" class="proj-back">← Projects</a>
+
+  <article>
+    <section class="proj-hero reveal">
+      <div class="proj-eyebrow">
+        <span class="proj-eyebrow-num">03</span>
+        <span>ML · Healthcare</span>
+        <span>2024</span>
+      </div>
+      <h1 class="proj-title" transition:name="title-alzheimers">Alzheimer's Detection from MRI</h1>
+      <p class="proj-subtitle">
+        MRI-based severity classification of Alzheimer's disease using HOG feature extraction
+        and SVM — published at IEEE ICSSES 2024 with 98% accuracy.
+      </p>
+    </section>
+
+    <div class="proj-content">
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">Overview</span>
+        <div class="proj-section-body">
+          <p>
+            Alzheimer's disease (AD) is a neurodegenerative disorder commonly seen in older adults,
+            causing memory loss and affecting cognitive function. Traditional diagnosis relies on cognitive
+            testing, which is ineffective for detecting AD at early stages. This project developed a
+            machine learning pipeline to classify the severity of AD from brain MRI scans — enabling
+            earlier, more objective diagnosis.
+          </p>
+          <p>
+            The project was conducted as the major final-year project at Siddaganga Institute of Technology,
+            Tumakuru (2023–24), and resulted in a publication at the 2024 IEEE International Conference on
+            Smart Systems for Applications in Electrical Sciences (ICSSES).
+          </p>
+        </div>
+      </section>
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">Problem</span>
+        <div class="proj-section-body">
+          <p>
+            When a brain is affected by AD, the ventricles enlarge and the hippocampus and cortex shrink.
+            These structural changes are visible in MRI scans, but manual interpretation varies between
+            clinicians, leading to diagnostic inconsistency. The goal was to build a model that classifies
+            MRI scans into four severity levels: <em>Non-Demented</em>, <em>Very Mild Dementia</em>,
+            <em>Mild Dementia</em>, and <em>Moderate Dementia</em>.
+          </p>
+          <p>
+            Prior work showed that multiclass classification of AD severity — especially detecting Moderate
+            Dementia — was consistently weaker than binary classification. Improving multiclass accuracy
+            was the specific challenge the paper addressed.
+          </p>
+        </div>
+      </section>
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">Dataset</span>
+        <div class="proj-section-body">
+          <div class="proj-image-wrap">
+            <img src="/images/projects/alzheimers-classes.jpg" alt="Four MRI classes: Non-Demented, Very Mild, Mild, and Moderate Dementia" class="proj-image" loading="lazy" />
+            <p class="proj-image-caption">Four MRI severity classes from the Kaggle dataset used for training and testing.</p>
+          </div>
+          <p>
+            Two Kaggle brain MRI datasets were used. KaggleDataset1 contains 5,121 images at 176×208px
+            across the four classes; KaggleDataset2 contains 6,400 images at 128×128px. The class
+            distribution is heavily imbalanced — Non-Demented images dominate while Moderate Dementia
+            cases are sparse — making accurate classification of severe cases particularly difficult.
+          </p>
+        </div>
+      </section>
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">Approach</span>
+        <div class="proj-section-body">
+          <div class="proj-image-wrap">
+            <img src="/images/projects/alzheimers-hog.jpg" alt="HOG feature extraction applied to an MRI image" class="proj-image" loading="lazy" />
+            <p class="proj-image-caption">HOG applied to an MRI scan — gradient orientations highlight structural edges in brain tissue.</p>
+          </div>
+          <div class="proj-steps">
+            <div class="proj-step">
+              <span class="proj-step-num">01</span>
+              <div class="proj-step-content">
+                <h4>HOG Feature Extraction</h4>
+                <p>Histogram of Oriented Gradients (HOG) computes pixelwise gradient magnitude and orientation across the MRI image, storing them in a normalised histogram. Each 64×64 image produces a 1×2304 feature vector capturing structural edge information relevant to brain tissue changes.</p>
+              </div>
+            </div>
+            <div class="proj-step">
+              <span class="proj-step-num">02</span>
+              <div class="proj-step-content">
+                <h4>SVM Classification</h4>
+                <p>Support Vector Machine classifiers were trained with three kernels — linear, polynomial (poly), and radial basis function (rbf) — and evaluated against both datasets. The polynomial kernel was hypothesised to separate the four severity classes more cleanly by increasing dimensionality.</p>
+              </div>
+            </div>
+            <div class="proj-step">
+              <span class="proj-step-num">03</span>
+              <div class="proj-step-content">
+                <h4>Comparison Classifiers</h4>
+                <p>Random Forest (RF) and K-Nearest Neighbours (KNN) were tested on the same datasets as baselines. All models were evaluated on 20% held-out test splits using accuracy, precision, recall, and F1-score.</p>
+              </div>
+            </div>
+            <div class="proj-step">
+              <span class="proj-step-num">04</span>
+              <div class="proj-step-content">
+                <h4>Deep Learning Exploration</h4>
+                <p>Separately, CNN architectures including DenseNet169, ResNet50, and MobileNetV2 were trained using TensorFlow on the same MRI dataset, with GPU memory optimisation for training on limited hardware. These experiments informed the final comparison in the published paper.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">Results</span>
+        <div class="proj-section-body">
+          <div class="proj-metrics">
+            <div class="proj-metric">
+              <span class="proj-metric-value">98%</span>
+              <span class="proj-metric-label">Accuracy</span>
+            </div>
+            <div class="proj-metric">
+              <span class="proj-metric-value">99%</span>
+              <span class="proj-metric-label">Precision</span>
+            </div>
+            <div class="proj-metric">
+              <span class="proj-metric-value">98.5%</span>
+              <span class="proj-metric-label">F1-Score</span>
+            </div>
+            <div class="proj-metric">
+              <span class="proj-metric-value">98%</span>
+              <span class="proj-metric-label">Recall</span>
+            </div>
+          </div>
+          <div class="proj-image-wrap">
+            <img src="/images/projects/alzheimers-confusion.jpg" alt="Confusion matrix for SVM with polynomial kernel on KaggleDataset1" class="proj-image" loading="lazy" />
+            <p class="proj-image-caption">Confusion matrix — SVM with polynomial kernel on KaggleDataset1 (1,025 test images).</p>
+          </div>
+          <p>
+            SVM with polynomial kernel achieved the highest performance across both datasets. Critically,
+            it also achieved the best classification of the Moderate Dementia class — the most clinically
+            important and most difficult to classify. Random Forest was the weakest performer at 83.09%
+            accuracy on KaggleDataset2.
+          </p>
+        </div>
+      </section>
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">Stack</span>
+        <div class="proj-section-body">
+          <div class="proj-stack">
+            <span class="proj-stack-item">Python</span>
+            <span class="proj-stack-item">scikit-learn</span>
+            <span class="proj-stack-item">TensorFlow</span>
+            <span class="proj-stack-item">NumPy</span>
+            <span class="proj-stack-item">pandas</span>
+            <span class="proj-stack-item">Jupyter Notebook</span>
+            <span class="proj-stack-item">HOG</span>
+            <span class="proj-stack-item">SVM</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="proj-section reveal">
+        <span class="proj-section-label">Publication</span>
+        <div class="proj-section-body">
+          <p>
+            V. A. Aravind et al., "Alzheimer's Disease Detection from MRI Images using Histogram of
+            Oriented Gradients and Support Vector Machine," 2024 IEEE International Conference on
+            Smart Systems for Applications in Electrical Sciences (ICSSES), Tumakuru, India, pp. 1–6.
+          </p>
+          <div class="proj-links">
+            <a href="https://doi.org/10.1109/ICSSES62373.2024.10561304" target="_blank" rel="noopener" class="proj-link">
+              View on IEEE ↗
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </article>
+</Layout>
+
+<script>
+  import '../../scripts/main.js';
+</script>

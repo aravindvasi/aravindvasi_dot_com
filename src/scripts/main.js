@@ -190,3 +190,11 @@ document.querySelectorAll('.project-card').forEach(card => {
     gsap.to(card, { rotateX: 0, rotateY: 0, y: 0, duration: 0.5, ease: 'power2.out' });
   });
 });
+
+// ---------- Project card click ----------
+document.querySelectorAll('.project-card[data-href]').forEach(card => {
+  card.addEventListener('click', e => {
+    if (e.target.closest('a')) return;
+    window.location.href = card.dataset.href;
+  });
+});
