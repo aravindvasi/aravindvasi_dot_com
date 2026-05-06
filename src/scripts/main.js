@@ -198,3 +198,13 @@ document.querySelectorAll('.project-card[data-href]').forEach(card => {
     window.location.href = card.dataset.href;
   });
 });
+
+// ---------- Project back button ----------
+document.querySelector('.proj-back')?.addEventListener('click', e => {
+  e.preventDefault();
+  if (history.length > 1) {
+    history.back();
+  } else {
+    window.location.href = '/#projects';
+  }
+});

@@ -40,6 +40,13 @@ const {
       (function () {
         var t = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', t);
+        // Strip the loader from any page fetched via ViewTransitions before it is
+        // swapped into the DOM. astro:before-swap only fires on client-side navigation,
+        // never on the initial hard load, so the first-load animation is unaffected.
+        document.addEventListener('astro:before-swap', function (e) {
+          var l = e.newDocument.getElementById('loader');
+          if (l) l.remove();
+        });
       })();
     </script>
     <ViewTransitions />
@@ -59,16 +66,6 @@ const {
     <script is:inline>
       (function () {
         'use strict';
-
-        // sessionStorage flag is absent only on the very first page load in this tab.
-        // ViewTransitions re-runs is:inline scripts but window 'load' never re-fires,
-        // so the loader would hang forever on any subsequent navigation. Skip it.
-        var _l = document.getElementById('loader');
-        if (sessionStorage.getItem('_sv')) {
-          if (_l) _l.remove();
-          return;
-        }
-        sessionStorage.setItem('_sv', '1');
 
         const SWING_MS      = 820;
         const CONTACT_MS    = 90;
