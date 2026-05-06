@@ -85,6 +85,7 @@ gsap.set('.hero-meta', { opacity: 0, y: 20 });
 gsap.set('.hero-title .word', { opacity: 0, y: 80 });
 gsap.set('.hero-tagline', { opacity: 0, y: 20 });
 gsap.set('.hero-scroll', { opacity: 0, y: 20 });
+gsap.set('.hero-photo-wrap', { opacity: 0, x: 30 });
 gsap.set('.reveal', { opacity: 0, y: 40 });
 
 // ---------- Hero entrance ----------
@@ -94,7 +95,8 @@ heroTl
   .to('.hero-meta', { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' })
   .to('.hero-title .word', { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.15 }, '-=0.4')
   .to('.hero-tagline', { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.4')
-  .to('.hero-scroll', { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.5');
+  .to('.hero-scroll', { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.5')
+  .to('.hero-photo-wrap', { opacity: 1, x: 0, duration: 1, ease: 'power2.out' }, '-=1');
 
 // ---------- Scroll reveal ----------
 document.querySelectorAll('.reveal').forEach(el => {
@@ -110,21 +112,6 @@ document.querySelectorAll('.reveal').forEach(el => {
     ease: 'power2.out',
   });
 });
-
-// ---------- Typewriter tagline ----------
-const taglineEl = document.querySelector('.hero-tagline');
-if (taglineEl) {
-  const taglineText = taglineEl.dataset.text || '';
-  taglineEl.textContent = '';
-  let tIdx = 0;
-  function typeNext() {
-    if (tIdx < taglineText.length) {
-      taglineEl.textContent += taglineText[tIdx++];
-      setTimeout(typeNext, 45 + Math.random() * 35);
-    }
-  }
-  setTimeout(typeNext, 1200);
-}
 
 // ---------- Nav hover scramble ----------
 const SCHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
