@@ -79,6 +79,93 @@ const {
 
         const svg = document.getElementById('loader-svg');
         if (!svg) return;
+
+        // ---- Quantum pun cycle ----
+        const PUNS = [
+          "Superposition loading... both done and not done.",
+          "Collapsing the wave function. Please observe patiently.",
+          "Entangling your bits. Einstein is not pleased.",
+          "Running on qubits. Results may vary until measured.",
+          "Schrödinger’s page — it exists until you look.",
+          "Tunnelling through the potential barrier…",
+          "Decoherence avoided. Barely.",
+          "Applying Hadamard gate. Your page is now in all states at once.",
+          "No hidden variables. Just loading.",
+          "BB92 handshake in progress. Eavesdroppers detected: 0.",
+          "Quantum supremacy achieved. Your page is next.",
+          "Collapsing probability amplitudes… please don’t observe yet.",
+          "According to Heisenberg, you can’t know both where we are and how fast we’re going.",
+          "Grover’s algorithm searching for your content. O(√N) steps remaining.",
+          "No-cloning theorem in effect. This page is one of a kind.",
+          "Many-worlds says another you already loaded this. Lucky them.",
+          "Shor’s algorithm factoring your wait time…",
+          "Quantum Zeno effect: the more you watch, the slower it loads.",
+          "Your page is on the Bloch sphere. Somewhere.",
+          "|0⟩ + |1⟩ states being prepared…",
+          "Bell inequality violated. Loading anyway.",
+          "Spooky action at a distance. The server felt it.",
+          "Quantum error correction in progress. Most qubits survived.",
+          "NISQ device warming up. Noise included at no extra charge.",
+          "⟨you | loading | page⟩",
+          "Wave-particle duality: this page is both useful and theoretical.",
+          "Quantum annealing your experience to its lowest energy state.",
+          "Pauli exclusion: no two of these puns occupy the same state.",
+          "Planck’s constant: ℏ = 1.055 × 10⁻³⁴ J·s. Unrelated. Still loading.",
+          "Quantum teleportation initiated. Physical matter not included.",
+          "The universe computed this. It took 13.8 billion years of warmup.",
+          "Entanglement established. Your other device knows already.",
+          "Coherence time exceeded. Please re-observe.",
+          "Running a quantum circuit with 0 errors. Results may still be wrong.",
+          "Eigenvalues computed. You won’t understand them either.",
+          "Measurement basis: computational. Overthinking basis: also you.",
+          "Quantum walk in progress. Faster than classical. Still feels slow.",
+          "Initialising |ψ⟩. Do not disturb the qubit.",
+          "Phase kickback applied. You’ll feel it in the results.",
+          "Quantum memory allocated. It forgets after 100 microseconds.",
+          "All paths computed simultaneously. Picking the best one now.",
+          "Interference pattern detected. Constructive, fortunately.",
+          "Amplitude amplification in progress. Signal emerging from noise.",
+          "T1 time: 150μs. T2 time: 80μs. Your patience: priceless.",
+          "Topological qubit detected. Braiding in progress.",
+          "Quantum random number generated: 4. (It’s genuinely random.)",
+          "Error rate: 0.1%. That’s excellent for quantum. Trust us.",
+          "Hadamard → CNOT → Toffoli. Assembling your page gate by gate.",
+          "The universe is a quantum computer. This is just a subroutine.",
+          "Please do not collapse this function before it’s ready.",
+          "Quantum advantage confirmed: this loads faster in a parallel universe.",
+          "Copenhagen or many-worlds? Either way, you’re waiting.",
+        ];
+
+        function shuffle(arr) {
+          var a = arr.slice();
+          for (var i = a.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+          }
+          return a;
+        }
+
+        function nextPun() {
+          var queue = null;
+          var idx = 0;
+          try {
+            queue = JSON.parse(localStorage.getItem('_pq'));
+            idx   = parseInt(localStorage.getItem('_pi') || '0', 10);
+          } catch (e) {}
+          if (!Array.isArray(queue) || idx >= queue.length) {
+            queue = shuffle(PUNS);
+            idx   = 0;
+            try { localStorage.setItem('_pq', JSON.stringify(queue)); } catch(e) {}
+          }
+          var pun = queue[idx];
+          try { localStorage.setItem('_pi', String(idx + 1)); } catch(e) {}
+          return pun;
+        }
+
+        var labelEl = document.querySelector('.loader-label');
+        if (labelEl) labelEl.textContent = nextPun();
+        // ---------------------------
+
         const NS = 'http://www.w3.org/2000/svg';
 
         function cssVar(name) {
