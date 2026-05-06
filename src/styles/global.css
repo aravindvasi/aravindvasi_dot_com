@@ -1257,7 +1257,7 @@ ul {
 
 /* Project page responsive */
 @media (max-width: 880px) {
-  .proj-back { position: static; padding: 5rem 1.25rem 0; margin-bottom: -2rem; display: block; }
+  .proj-back { position: relative; z-index: 5; padding: 5rem 1.25rem 0; margin-bottom: -2rem; display: block; }
   .proj-hero { padding: 6rem 1.25rem 4rem; }
   .proj-content { padding: 0 1.25rem; }
   .proj-section { grid-template-columns: 1fr; gap: 1.5rem; padding: 3rem 0; }
