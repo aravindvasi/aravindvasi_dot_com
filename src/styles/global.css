@@ -774,6 +774,8 @@ ul {
   .pub-item { grid-template-columns: 1fr; gap: 0.5rem; }
 
   .footer { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 2rem 1.25rem; }
+
+  .contact-mail { font-size: clamp(1.4rem, 5vw, 2.2rem); word-break: break-word; overflow-wrap: break-word; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1072,6 +1074,7 @@ ul {
 
 .proj-content {
   max-width: 1200px;
+  margin: 0 auto;
   padding: 0 3rem;
   position: relative;
   z-index: 2;
