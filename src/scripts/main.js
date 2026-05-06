@@ -202,9 +202,5 @@ document.querySelectorAll('.project-card[data-href]').forEach(card => {
 // ---------- Project back button ----------
 document.querySelector('.proj-back')?.addEventListener('click', e => {
   e.preventDefault();
-  if (history.length > 1) {
-    history.back();
-  } else {
-    window.location.href = '/#projects';
-  }
+  window.location.href = '/#projects';
 });
