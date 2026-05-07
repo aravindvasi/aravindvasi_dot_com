@@ -12,7 +12,7 @@
   --bg: #0a0a0c;
   --bg-2: #111114;
   --ink: #ededee;
-  --ink-dim: #9a9aa0;
+  --ink-dim: #c0c0c8;
   --ink-faint: #4a4a52;
   --line: #1f1f24;
   --accent: #c4ff3e;
@@ -28,7 +28,7 @@
   --bg: #f5f5f0;
   --bg-2: #eeeee8;
   --ink: #111114;
-  --ink-dim: #444450;
+  --ink-dim: #2a2a38;
   --ink-faint: #8888a0;
   --line: #d8d8d0;
   --accent: #00b4d8;
@@ -303,7 +303,7 @@ ul {
 }
 
 .hero-title {
-  font-family: var(--serif);
+  font-family: 'Gloock', var(--serif);
   font-weight: 400;
   font-size: clamp(3rem, 8vw, 6.5rem);
   line-height: 0.92;
